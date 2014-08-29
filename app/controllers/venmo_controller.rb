@@ -20,7 +20,11 @@ class VenmoController < ApplicationController
     Venmo.create(:username => user_json["user"]["username"])
 
 
-
+    def index
+        @betfeed = Venmo.find_by_sql("SELECT users.id, users.venmo_id, users.username, users.profile_picture_url MIN(order_details.unit_price) AS lowest_price, MAX(order_details.unit_price) AS highest_price, AVG(order_details.unit_price) AS average_price FROM customers "+
+            "INNER JOIN orders ON customers.id = orders.customer_id "+
+            "INNER JOIN order_details ON orders.id = order_details.order_id GROUP BY customers.id, customers.company_name ORDER BY 5;")
+    end
 
     # getinfourl = "https://api.venmo.com/v1/me?access_token=" + token
     # getinfo = HTTParty.get(getinfourl)

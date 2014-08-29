@@ -2,8 +2,12 @@
 		<div class="container">
 		  <div class="row">
 		  	<div class="col-md-6 col md-offset-3">
-		  		<%#= link_to @answer  %>
-		  		<%#= link_to bet_path "Here" %>
+		  		<%= form_for venmo_path do |a| %>
+		  		<%= a.text_field @email %>
+		  		<%= a.text_field @amount %>
+		  		<%= a.submit %>
+		  		<% end %>
+		  		<%#= link_to "BET ME", bets_path(@answer) %>
 		  	</div>
 		  </div>
 

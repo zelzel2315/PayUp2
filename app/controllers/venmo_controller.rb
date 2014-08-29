@@ -1,9 +1,12 @@
 
 class VenmoController < ApplicationController
- 
-
-
-  def new
+ def bet
+    
+    url = "https://api.venmo.com/v1/payments"
+    @answer = HTTParty.post(url, :query => {:access_token => '2GnsQsVeFtZtqfMk2MwpGBsqH2CPjTjP', :email => @email, :amount => @amount, :note => 'PayUp'})
+    redirect_to home_path
+  end
+ def new
     # Look to see if the url has a code in it
     if params["code"]
        auth_code = params["code"]

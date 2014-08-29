@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  username: MyString
+  first_name: MyString
+  last_name: MyString
+  display_name: MyString
+  is_friend: false
+  friends_count: 1
+  about: MyString
+  email: MyString
+  phone: MyString
+  profile_picture_url: MyString
+  friend_request: MyString
+  trust_request: false
+  id: MyString
+  date_joined: 2014-08-28
+
+two:
+  username: MyString
+  first_name: MyString
+  last_name: MyString
+  display_name: MyString
+  is_friend: false
+  friends_count: 1
+  about: MyString
+  email: MyString
+  phone: MyString
+  profile_picture_url: MyString
+  friend_request: MyString
+  trust_request: false
+  id: MyString
+  date_joined: 2014-08-28

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  challenge: MyString
+  amount: 1.5
+  challenge_start: 2014-08-28
+  challenge_end: 2014-08-28
+  winner: MyString
+  loser: MyString
+  UserBet_id: 
+
+two:
+  challenge: MyString
+  amount: 1.5
+  challenge_start: 2014-08-28
+  challenge_end: 2014-08-28
+  winner: MyString
+  loser: MyString
+  UserBet_id: 

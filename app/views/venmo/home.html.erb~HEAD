@@ -1,0 +1,39 @@
+	
+		<div class="container">
+		  <div class="row">
+		  	<div class="col-md-6 col md-offset-3">
+		  		<%#= link_to @answer  %>
+		  		<%= link_t %>
+		  	</div>
+		  </div>
+
+		  <div class="row">
+			  <div class="col-md-6 col-md-offset-3">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th><div class="challenger">Challenger</th>
+							<th><div class="challengee">Challengee</th>
+							<th><div class="challenge">Challenge</th>
+							<th><div class="collateral">Collateral</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><img src="<%#= @profile_picture_url %>" alt="..." class="img-circle"><%#= first_name %></td>
+							<td><img src="<%= @profile_picture_url %>" alt="..." class="img-circle"><%#= first_name %></td>
+							<td><%#= challenge_description %></td>
+							<td><%#= wager %>  <span class="label label-success">Just Challenged!</span></td>
+						</tr>
+						
+					</tbody>
+				  
+				</table>
+			</div>
+		</div> 
+			
+
+	</div>
+
+
+

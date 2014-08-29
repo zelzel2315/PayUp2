@@ -26,9 +26,12 @@ class VenmoController < ApplicationController
     end
 
     def index
-        @betfeed = Venmo.find_by_sql("SELECT users.id, users.venmo_id, users.username, users.profile_picture_url MIN(order_details.unit_price) AS lowest_price, MAX(order_details.unit_price) AS highest_price, AVG(order_details.unit_price) AS average_price FROM customers "+
-            "INNER JOIN orders ON customers.id = orders.customer_id "+
-            "INNER JOIN order_details ON orders.id = order_details.order_id GROUP BY customers.id, customers.company_name ORDER BY 5;")
+        # @betfeed = Venmo.find_by_sql("SELECT users.id, users.venmo_id, users.username, users.profile_picture_url MIN(order_details.unit_price) AS lowest_price, MAX(order_details.unit_price) AS highest_price, AVG(order_details.unit_price) AS average_price FROM customers "+
+        #     "INNER JOIN orders ON customers.id = orders.customer_id "+
+        #     "INNER JOIN order_details ON orders.id = order_details.order_id GROUP BY customers.id, customers.company_name ORDER BY 5;")
+        @betcount = Venmo.find_by_sql("SELECT users.username, COUNT(DISTINCT bets.id) AS made_bets FROM bets "+
+            "INNER JOIN user_bets ON bets.id = user_bets.bet_id "+
+            "INNER JOIN users ON user_bets.user_id = users.id GROUP BY users.username ORDER BY 1;")
     end
 
     # getinfourl = "https://api.venmo.com/v1/me?access_token=" + token

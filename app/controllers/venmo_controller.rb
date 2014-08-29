@@ -1,5 +1,6 @@
+
 class VenmoController < ApplicationController
-  def venmo
+  def index
     
     if params["code"]
        auth_code = params["code"]
@@ -8,17 +9,21 @@ class VenmoController < ApplicationController
 
     url = "https://api.venmo.com/v1/oauth/access_token"
     response = HTTParty.post(url, :query => {:client_id => '1917', :client_secret => 'bevp84EhbeJNt39mb6GgFA96jxCJ7Ata', :code => auth_code})
+    
     user = response["user"]
-    id = user["id"]
+    # user_ret = user.parsed_response
+    # id = user["id"]
     #     puts id
     # puts response
 
-    token = response["access_token"]
-    puts token  
-
-    user_json = JSON.parse(user)
-    Venmo.create(:username => user_json["user"]["username"])
-
+    # token = response["access_token"]
+    # puts token  
+    puts user
+    # user_json = user.parsed_response
+    @user = User.new(:username => user["username"], :first_name => user["first_name"], :last_name => user["last_name"], :display_name => user["display_name"], :is_friend => user["is_friend"], :friends_count => user["friends_count"], :about => user["about"], :email => user["email"], :phone => user["phone"], :profile_picture_url => user["profile_picture_url"], :friend_request => user["friend_request"], :trust_request => user["trust_request"], :venmo_id => user["id"], :date_joined => user["date_joined"] )
+    if @user.save
+        redirect_to users_path
+    end
 
 
 

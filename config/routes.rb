@@ -4,7 +4,9 @@ PayUp::Application.routes.draw do
   resources :users
   
   get '/venmo' => 'venmo#index'
-  get '/venmo/new' => 'venmo#new', as: :new
+  get '/venmo/home' => 'venmo#home', as: :home
+
+  resources :bets
 
 
   # The priority is based upon order of creation: first created -> highest priority.

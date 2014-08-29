@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20140829013227) do
     t.float    "amount"
     t.date     "challenge_start"
     t.date     "challenge_end"
-    t.integer  "winner_id"
+    t.integer  "winner_id" 
     t.datetime "created_at"
     t.datetime "updated_at"
   end

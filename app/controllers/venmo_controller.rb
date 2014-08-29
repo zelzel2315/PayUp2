@@ -16,15 +16,21 @@ class VenmoController < ApplicationController
     token = response["access_token"]
     puts token  
 
+    user_json = JSON.parse(user)
+    Venmo.create
+
+
+
+
     # getinfourl = "https://api.venmo.com/v1/me?access_token=" + token
     # getinfo = HTTParty.get(getinfourl)
     # puts getinfo
 
-    urlgetfriend = "https://api.venmo.com/v1/users/" + id + "/friends?"
-    puts urlgetfriend
-    getfriend = HTTParty.get(urlgetfriend)
+    # urlgetfriend = "https://api.venmo.com/v1/users/" + id + "/friends?"
+    # puts urlgetfriend
+    # getfriend = HTTParty.get(urlgetfriend)
 
-    puts getfriend
+    # puts getfriend
 
 
     # data = response["user"]

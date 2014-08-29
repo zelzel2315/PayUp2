@@ -34,7 +34,7 @@ end
 
 gem 'bootstrap-sass', '~> 3.2.0'
 
-<<<<<<< HEAD
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
 end
@@ -42,9 +42,9 @@ end
 group :test do
   gem 'shoulda-matchers', require: false
 end
-=======
+
 gem 'httparty'
->>>>>>> savedata
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -1,6 +1,6 @@
 
 class VenmoController < ApplicationController
-  def index
+  def new
     
     if params["code"]
        auth_code = params["code"]
@@ -22,7 +22,7 @@ class VenmoController < ApplicationController
     # user_json = user.parsed_response
     @user = User.new(:username => user["username"], :first_name => user["first_name"], :last_name => user["last_name"], :display_name => user["display_name"], :is_friend => user["is_friend"], :friends_count => user["friends_count"], :about => user["about"], :email => user["email"], :phone => user["phone"], :profile_picture_url => user["profile_picture_url"], :friend_request => user["friend_request"], :trust_request => user["trust_request"], :venmo_id => user["id"], :date_joined => user["date_joined"] )
     if @user.save
-        redirect_to users_path
+        redirect_to venmo_path
     end
 
 

@@ -17,7 +17,7 @@ class VenmoController < ApplicationController
     puts token  
 
     user_json = JSON.parse(user)
-    Venmo.create
+    Venmo.create(:username => user_json["user"]["username"])
 
 
 

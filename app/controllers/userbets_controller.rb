@@ -1,2 +1,3 @@
 class UserbetsController < ApplicationController
+	 
 end

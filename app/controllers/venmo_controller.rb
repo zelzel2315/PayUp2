@@ -1,10 +1,10 @@
 
 class VenmoController < ApplicationController
-<<<<<<< HEAD
-  def new
-=======
+# <<<<<<< HEAD
+#   def new
+# =======
  def bet
->>>>>>> origin
+# >>>>>>> origin
     
     url = "https://api.venmo.com/v1/payments"
     @answer = HTTParty.post(url, :query => {:access_token => '2GnsQsVeFtZtqfMk2MwpGBsqH2CPjTjP', :email => @email, :amount => @amount, :note => 'PayUp'})
@@ -42,7 +42,7 @@ class VenmoController < ApplicationController
 
     # token = response["access_token"]
     # puts token  
-<<<<<<< HEAD
+# <<<<<<< HEAD
     puts user
     # user_json = user.parsed_response
     @user = User.new(:username => user["username"], :first_name => user["first_name"], :last_name => user["last_name"], :display_name => user["display_name"], :is_friend => user["is_friend"], :friends_count => user["friends_count"], :about => user["about"], :email => user["email"], :phone => user["phone"], :profile_picture_url => user["profile_picture_url"], :friend_request => user["friend_request"], :trust_request => user["trust_request"], :venmo_id => user["id"], :date_joined => user["date_joined"] )
@@ -58,13 +58,13 @@ class VenmoController < ApplicationController
             "INNER JOIN user_bets ON bets.id = user_bets.bet_id "+
             "INNER JOIN users ON user_bets.user_id = users.id GROUP BY users.username ORDER BY 1;")
     end
-=======
+# =======
     # def index
     #     @betfeed = Venmo.find_by_sql("SELECT users.id, users.venmo_id, users.username, users.profile_picture_url MIN(order_details.unit_price) AS lowest_price, MAX(order_details.unit_price) AS highest_price, AVG(order_details.unit_price) AS average_price FROM customers "+
     #         "INNER JOIN orders ON customers.id = orders.customer_id "+
     #         "INNER JOIN order_details ON orders.id = order_details.order_id GROUP BY customers.id, customers.company_name ORDER BY 5;")
     # end
->>>>>>> origin
+# >>>>>>> origin
 
     # getinfourl = "https://api.venmo.com/v1/me?access_token=" + token
     # getinfo = HTTParty.get(getinfourl)
@@ -89,4 +89,4 @@ class VenmoController < ApplicationController
     
 
    end
-   end
+end

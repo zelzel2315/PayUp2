@@ -2,13 +2,12 @@
 		<div class="container">
 		  <div class="row">
 		  	<div class="col-md-6 col md-offset-3">
-		  		<%= link_to @amount %>
-		  		<%= form_for venmo_path do |f| %>
-		  		<%= f.text_field :email %>
-		  		<%= f.text_field :amount %>
-		  		<%= f.submit %>
+		  		<%= form_tag venmo_path do  %>
+		  		<%= text_field_tag(:email) %>
+		  		<%= text_field_tag(:amount) %>
+		  		<%= submit_tag %>
 		  		<% end %>
-		  		<%#= link_to "BET ME", bets_path(@answer) %>
+		  		<%= link_to "BET ME", bets_path(@answer) %>
 		  	</div>
 		  </div>
 

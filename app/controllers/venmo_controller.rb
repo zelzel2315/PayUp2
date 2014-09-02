@@ -4,7 +4,7 @@ class VenmoController < ApplicationController
     if params["code"]
        auth_code = params["code"]
        # puts auth_code
-    end
+    end 
 
     url = "https://api.venmo.com/v1/oauth/access_token"
     response = HTTParty.post(url, :query => {:client_id => '1917', :client_secret => 'bevp84EhbeJNt39mb6GgFA96jxCJ7Ata', :code => auth_code})
@@ -26,6 +26,11 @@ class VenmoController < ApplicationController
 
     puts getfriend
 
+    # have we tried incorporating this code?
+     @client = Client.new(params[:access_token])
+    if @client.save
+      redirect_to @client
+    else
 
     # data = response["user"]
     # # @data.each do |item|

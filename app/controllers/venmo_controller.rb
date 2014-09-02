@@ -1,5 +1,6 @@
 
 class VenmoController < ApplicationController
+
 def bet
     @email = params[:email]
     @amount = params[:amount]
@@ -90,4 +91,4 @@ def bet
     
 
    end
-   end
+end

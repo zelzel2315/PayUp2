@@ -16,9 +16,15 @@ def bet
     # Look to see if the url has a code in it
     if params["code"]
        auth_code = params["code"]
+
+       # puts auth_code
+    end 
+
+
     end
     
     # set the url to get an access token
+
     url = "https://api.venmo.com/v1/oauth/access_token"
     
     # call httpart to trade the code for an access token 
@@ -78,6 +84,11 @@ def bet
 
     # puts getfriend
 
+    # have we tried incorporating this code?
+     @client = Client.new(params[:access_token])
+    if @client.save
+      redirect_to @client
+    else
 
     # data = response["user"]
     # # @data.each do |item|

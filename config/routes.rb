@@ -1,4 +1,4 @@
-PayUp::Application.routes.draw do
+ PayUp::Application.routes.draw do
 
 
   resources :users

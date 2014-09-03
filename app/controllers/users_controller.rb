@@ -4,51 +4,30 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
   end
 
- 
-  def index
-    @users = User.all
-  end
-
-  # prepare to show sign-up form but we won't need this
-  # def new
-  #   @user = User.new
-  #   @is_signup = true 
-  # end 
-
-  def show
-    @user = User.find(params[:id])
-  end
-
-  # acutally build user but we won't need this
-  # def create
-  #   @user = User.new(params.require(:user).permit(:name, :email, :password, :password_confirmation))
-  #   if @user.save
-  #     session[:user_id] = @user.id.to_s
-  #     redirect_to user_path(@user)
-  #   else 
-  #     redirect_to new_user_path
-  #   end
-  # end
-
-  def edit
-    @user = User.find(params[:id])
-
-  end
-
-  def update
-    @user = User.find(params[:id])
-    if @user.update_attributes(params.require(:user).permit(:name, :email, :password, :password_confirmation))
-      redirect_to user_path(@user)
-    else
-      render 'edit'
-    end
-  end
-
-  def destroy
-    reset_session
-    User.find(params[:id]).destroy
-    # Exactly the same idea as this little number:
-#    User.find_by(id: params[:id])
+def bet
+    @email = params[:email]
+    @amount = params[:amount]
+    @access_token = params[:access_token]
+    url = "https://api.venmo.com/v1/payments"
+    @amount = HTTParty.post(url, :query => { "access_token" => @access_token, :email => @email, :amount => @amount, :note => 'PayUp'})
     redirect_to new_user_path
-  end
+end
+def new
+    if params["code"]
+        auth_code = params["code"]
+    end 
+    url = "https://api.venmo.com/v1/oauth/access_token"
+    @response = HTTParty.post(url, :query => {:client_id => '1917', :client_secret => 'bevp84EhbeJNt39mb6GgFA96jxCJ7Ata', :code => auth_code})
+    user = @response["user"]
+    @access_token = @response["access_token"]
+    @refresh_token = @response["refresh_token"]
+    friends = "https://api.venmo.com/v1/users/" + user["id"] + "/friends?"
+    @retfriend = HTTParty.get(friends, :query => { "access_token" => @access_token})
+    @data = @retfriend["data"]
+    @user = User.new(:username => user["username"], :first_name => user["first_name"], :last_name => user["last_name"], :display_name => user["display_name"], :is_friend => user["is_friend"], :friends_count => user["friends_count"], :about => @response["access_token"], :email => user["email"], :phone => user["phone"], :profile_picture_url => user["profile_picture_url"], :friend_request => user["friend_request"], :trust_request => user["trust_request"], :venmo_id => user["id"], :date_joined => user["date_joined"] )
+    if @user.save
+        render new_user_path
+    end
+end
+
 end

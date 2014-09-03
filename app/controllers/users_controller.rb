@@ -9,26 +9,26 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  # prepare to show sign-up form
-  def new
-    @user = User.new
-    @is_signup = true 
-  end 
+  # prepare to show sign-up form but we won't need this
+  # def new
+  #   @user = User.new
+  #   @is_signup = true 
+  # end 
 
   def show
     @user = User.find(params[:id])
   end
 
-  # acutally build user
-  def create
-    @user = User.new(params.require(:user).permit(:name, :email, :password, :password_confirmation))
-    if @user.save
-      session[:user_id] = @user.id.to_s
-      redirect_to user_path(@user)
-    else 
-      redirect_to new_user_path
-    end
-  end
+  # acutally build user but we won't need this
+  # def create
+  #   @user = User.new(params.require(:user).permit(:name, :email, :password, :password_confirmation))
+  #   if @user.save
+  #     session[:user_id] = @user.id.to_s
+  #     redirect_to user_path(@user)
+  #   else 
+  #     redirect_to new_user_path
+  #   end
+  # end
 
   def edit
     @user = User.find(params[:id])

@@ -4,12 +4,11 @@ class VenmoController < ApplicationController
 def bet
     @email = params[:email]
     @amount = params[:amount]
-
-    puts @email
-    puts @amount
+    @token = params[:code]
+    puts @token
 
     url = "https://api.venmo.com/v1/payments"
-    @amount = HTTParty.post(url, :query => {:access_token => '2GnsQsVeFtZtqfMk2MwpGBsqH2CPjTjP', :email => @email, :amount => @amount, :note => 'PayUp'})
+    @amount = HTTParty.post(url, :query => {:access_token => @token, :email => @email, :amount => @amount, :note => 'PayUp'})
     redirect_to home_path(@amount)
   end
  def new
@@ -35,7 +34,7 @@ def bet
     
     # if the user saves then redirect to the venmo path
     if @user.save
-        redirect_to venmo_path
+        redirect_to venmo_path(@access_token)
     end
     # user_ret = user.parsed_response
     # id = user["id"]

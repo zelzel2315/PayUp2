@@ -8,3 +8,4 @@ class User < ActiveRecord::Base
  	has_many :bets, through: :user_bets
 
 end
+ 

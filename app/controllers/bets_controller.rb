@@ -1,5 +1,14 @@
 class BetsController < ApplicationController
-	def new
+
+	respond_to :json
+  #respond back with json when performing crud function
+
+  def index
+    @bets = Bet.all
+    respond_with @bets, each_serializer: BetSerializer
+  end
+
+  def new
     @bet = Bet.new
   end
 
@@ -17,28 +26,29 @@ class BetsController < ApplicationController
     #   if @current_likee.likees.include?(current_user)
         
     #     # creates a new match object that will belong to both users through UserMatch
-        bet = Bet.new
-        bet.save
+      bet = Bet.new
+      bet.save
 
-        #creates a new user_match object belonging to the first of the two users who are being matched
-        # need to create if logged in = current_user
-        user_bet_1 = UserBet.new
-        user_bet_1.user_id = current_user.id 
-        user_bet_1.bet_id = bet.id
-        user_bet_1.save
+      #creates a new user_match object belonging to the first of the two users who are being matched
+      # need to create if logged in = current_user
+      user_bet_1 = UserBet.new
+      user_bet_1.user_id = current_user.id 
+      user_bet_1.bet_id = bet.id
+      user_bet_1.save
 
-        #creates a new user_match object belonging to the second of the two users who are being matched
-        user_bet_2 = UserBet.new
-        user_bet_2.user_id = @current_likee.id
-        user_bet_2.bet_id = bet.id
-        user_bet_2.save
+      #creates a new user_match object belonging to the second of the two users who are being matched
+      user_bet_2 = UserBet.new
+      user_bet_2.user_id = @current_likee.id
+      user_bet_2.bet_id = bet.id
+      user_bet_2.save
 
-      end
+    end
 
-      redirect_to :back
+    if @bet.save
+      render json: @bet, status: :created
 
     else
-      redirect_to :back
+      render json: @bet.errors, status: :unprocessed_entity
     end
   end
 

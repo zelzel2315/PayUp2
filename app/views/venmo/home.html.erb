@@ -2,12 +2,16 @@
 		<div class="container">
 		  <div class="row">
 		  	<div class="col-md-6 col md-offset-3">
-		  		<%= form_tag venmo_path do  %>
+		  		<%= form_tag venmo_home_path do  %>
+		  		<%= hidden_field_tag "access_token", params[:code]%>
 		  		<%= text_field_tag(:email) %>
 		  		<%= text_field_tag(:amount) %>
 		  		<%= submit_tag %>
 		  		<% end %>
-		  		<%= link_to "BET ME", bets_path(@answer) %>
+
+		  		
+		  		<%= @response %>
+		  		<%= @access_token %>
 		  	</div>
 		  </div>
 

@@ -5,33 +5,25 @@ class BetsController < ApplicationController
 
   def create
     @bet = Bet.new(bet_params)
-   
-    # @current_betee = @like.likee
+    @bet.user1 = current_user
+    @bet.user2 = current_selected_user
 
-    # #prevent user from liking someone if they have already rejected them
-    # @like.save unless @current_likee.rejectors.include?(current_user)
-
-    # if @like.persisted? 
-      
-    #   #if the likee of the current like object has already liked the current user
-    #   if @current_likee.likees.include?(current_user)
-        
-    #     # creates a new match object that will belong to both users through UserMatch
-        bet = Bet.new
-        bet.save
+    # @bet.save unless @current_selected_user.
+      # bet = Bet.new
+      # bet.save
 
         #creates a new user_match object belonging to the first of the two users who are being matched
         # need to create if logged in = current_user
-        user_bet_1 = UserBet.new
-        user_bet_1.user_id = current_user.id 
-        user_bet_1.bet_id = bet.id
-        user_bet_1.save
+        user1 = UserBet.new
+        user1.user_id = current_user.id 
+        user1.bet_id = bet.id
+        user1.save
 
         #creates a new user_match object belonging to the second of the two users who are being matched
-        user_bet_2 = UserBet.new
-        user_bet_2.user_id = @current_likee.id
-        user_bet_2.bet_id = bet.id
-        user_bet_2.save
+        user2 = UserBet.new
+        user2.user_id = @current_selected_user.id
+        user2.bet_id = bet.id
+        user2.save
 
       end
 
@@ -45,7 +37,7 @@ class BetsController < ApplicationController
 private
 
   def bet_params
-    params.require(:bet).permit(:current_user.id, :current_user_friend.id) 
+    params.require(:bet).permit(:user1.id, :user2.id) 
   end
 
   def user_bet_params

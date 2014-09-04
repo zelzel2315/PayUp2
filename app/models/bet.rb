@@ -5,6 +5,7 @@ class Bet < ActiveRecord::Base
   # belongs_to :betee, class_name: "User", foreign_key: :betee_id, inverse_of: :betees
 
   has_many :user_bets
-  has_many :users, through: :user_bets
+  has_many :users, through: :user_bets, :foreign_key => :user_id
 
+  accepts_nested_attributes_for :users
 end 

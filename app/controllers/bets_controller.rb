@@ -17,16 +17,16 @@ class BetsController < ApplicationController
     @bet.user1 = current_user
     @bet.user2 = current_selected_user
 
-        user1 = UserBet.new
-        user1.user_id = current_user.id 
-        user1.bet_id = bet.id
-        user1.save
+        # user1 = UserBet.new
+        # user1.user_id = current_user.id 
+        # user1.bet_id = bet.id
+        # user1.save
 
         
-        user2 = UserBet.new
-        user2.user_id = @current_selected_user.id
-        user2.bet_id = bet.id
-        user2.save
+        # user2 = UserBet.new
+        # user2.user_id = @current_selected_user.id
+        # user2.bet_id = bet.id
+        # user2.save
     end
 
     if @bet.save

@@ -1,4 +1,5 @@
 class UserbetsController < ApplicationController
+
   def new
     @user_bet = UserBet.new
   end
@@ -12,6 +13,7 @@ class UserbetsController < ApplicationController
     @user_bet.destroy
     redirect_to users_path
   end
+  
 end	 
 #         #creates a new user_match object belonging to the first of the two users who are being matched
 #         # need to create if logged in = current_user

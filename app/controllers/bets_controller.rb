@@ -14,8 +14,8 @@ class BetsController < ApplicationController
 
   def create
     @bet = Bet.new(bet_params)
-    @bet.user1 = current_user
-    @bet.user2 = current_selected_user
+    # @user_bet1 = current_user
+    # @user_bet2 = current_selected_user
 
     # @bet.save unless @current_selected_user.
       # bet = Bet.new
@@ -23,16 +23,16 @@ class BetsController < ApplicationController
 
         #creates a new user_match object belonging to the first of the two users who are being matched
         # need to create if logged in = current_user
-        user1 = UserBet.new
-        user1.user_id = current_user.id 
-        user1.bet_id = bet.id
-        user1.save
+        user_bet1 = UserBet.new
+        user_bet1.user_id = current_user.id 
+        user_bet1.bet_id = bet.id
+        user_bet1.save
 
         #creates a new user_match object belonging to the second of the two users who are being matched
-        user2 = UserBet.new
-        user2.user_id = @current_selected_user.id
-        user2.bet_id = bet.id
-        user2.save
+        user_bet2 = UserBet.new
+        user_bet2.user_id = @collection_select_user.id
+        user_bet2.bet_id = bet.id
+        user_bet2.save
     end
 
     if @bet.save
@@ -46,7 +46,7 @@ class BetsController < ApplicationController
 private
 
   def bet_params
-    params.require(:bet).permit(:user1.id, :user2.id) 
+    params.require(:bet).permit(:user_bet1.id, :user_bet2.id) 
   end
 
   def user_bet_params

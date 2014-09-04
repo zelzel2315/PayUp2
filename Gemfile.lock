@@ -49,6 +49,8 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.2.0.1)
+      sass (~> 3.2)
     builder (3.1.4)
     callsite (0.0.11)
     celluloid (0.15.2)
@@ -67,9 +69,6 @@ GEM
     execjs (2.2.1)
     ffi (1.9.3)
     formatador (0.2.5)
-    foundation-rails (5.4.3.0)
-      railties (>= 3.1.0)
-      sass (>= 3.2.0)
     guard (2.6.1)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -190,8 +189,8 @@ DEPENDENCIES
   angularjs-rails
   better_errors
   binding_of_caller
+  bootstrap-sass (~> 3.2.0)
   coffee-rails (~> 4.0.0)
-  foundation-rails
   guard-rspec
   jasmine!
   jquery-rails

@@ -1,14 +1,14 @@
 class VenmoController < ApplicationController
 
-def bet
+  def bet
     @email = params[:email]
     @amount = params[:amount]
     @access_token = params[:access_token]
     url = "https://api.venmo.com/v1/payments"
     @amount = HTTParty.post(url, :query => { "access_token" => @access_token, :email => @email, :amount => @amount, :note => 'PayUp'})
     render new_user_path
-end
-def new
+  end
+  def new
     if params["code"]
         auth_code = params["code"]
     end 
@@ -24,7 +24,7 @@ def new
     if @user.save
         render home_path
     end
-end
+  end
 
 # def friends
 #     friends = "https://api.venmo.com/v1/users/" + @venmo_id + "/friends?"

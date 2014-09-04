@@ -24,13 +24,13 @@ class BetsController < ApplicationController
         #creates a new user_match object belonging to the first of the two users who are being matched
         # need to create if logged in = current_user
         user_bet1 = UserBet.new
-        user_bet1.user_id = current_user.id 
+        user_bet1 = current_user
         user_bet1.bet_id = bet.id
         user_bet1.save
 
         #creates a new user_match object belonging to the second of the two users who are being matched
         user_bet2 = UserBet.new
-        user_bet2.user_id = @collection_select_user.id
+        user_bet2 = @collection_select_user
         user_bet2.bet_id = bet.id
         user_bet2.save
     end

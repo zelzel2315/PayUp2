@@ -4,9 +4,11 @@
   resources :users
   resources :bets, defaults: { format: :json }
 
-  get '/venmo/home' => 'venmo#home', as: :home
-  post '/venmo/home' => 'venmo#bet'
-  get 'venmos' => 'venmo#index'
+  get '/users/bet' => 'venmo#home', as: :home
+  post '/users/bet' => 'users#bet'
+  
+
+  
 
 
   root 'users#index'

@@ -1,5 +1,14 @@
 class BetsController < ApplicationController
-	def new
+
+	respond_to :json
+  #respond back with json when performing crud function
+
+  def index
+    @bets = Bet.all
+    respond_with @bets, each_serializer: BetSerializer
+  end
+
+  def new
     @bet = Bet.new
   end
 
@@ -24,13 +33,13 @@ class BetsController < ApplicationController
         user2.user_id = @current_selected_user.id
         user2.bet_id = bet.id
         user2.save
+    end
 
-      end
-
-      redirect_to :back
+    if @bet.save
+      render json: @bet, status: :created
 
     else
-      redirect_to :back
+      render json: @bet.errors, status: :unprocessed_entity
     end
   end
 

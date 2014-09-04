@@ -26,3 +26,18 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+
+Choose who you are going to bet
+
+Choose what you are betting on
+
+Choose how much you would like to bet
+
+Place a Bet
+
+Show pending but not yet accepted bets
+
+Show accepted bets
+
+Show bets won or lost

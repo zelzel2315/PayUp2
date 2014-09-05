@@ -4,11 +4,12 @@
   resources :users
   resources :bets
 
-  get '/venmo/home' => 'venmo#home', as: :home
-  post '/venmo/home' => 'venmo#bet'
-  get 'venmos' => 'venmo#index'
+  get '/settle/bet' => 'bets#settle'
+
+  resource :session, only: [:new, :create, :destroy]
 
 
-  root 'users#index'
+
+  root 'sessions#new'
   
 end

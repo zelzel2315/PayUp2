@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 
 <%= link_to new_bet_path do %>
   <button type="button" class="btn btn-default">Place Another Bet!!</button>
@@ -8,6 +8,7 @@
 	<div class="col-md-6 col-md-offset-3">
 		<table class="table table-hover">
 			<thead>
+				<h3>All Bets</h3>
 				<tr>
 					<th><div class="challenge">Challenge</th>
 					<th><div class="amount">Amount</th>
@@ -28,19 +29,81 @@
 		</table>
 	</div>
 </div> 
-=======
-<h1>Bet home page</h1>
-<% @bets.each do |p| %>
-<%= p.challenge %>
-<%= p.amount %>
-<%= p.challenger %>
-<%= p.challengee %>
-<%= link_to "settle up", bet_path(p.id) %></br>
-<% end %>
 
-<h1>Place Another Bet</h1>
-<%= link_to "index", new_bet_path %>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<table class="table table-hover">
+			<thead>
+				<h3>Bets Pending</h3>
+				<tr>
+					<th><div class="challenge">Challenge</th>
+					<th><div class="amount">Amount</th>
+					<th><div class="challenger">Challenger</th>
+					<th><div class="challengee">Challengee</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @bets.with_pending_state.each do |p| %>
+				<tr>
+					<td><%= p.challenge %></td>
+					<td><%= p.amount %></td>
+					<td><%= p.challenger %></td>
+					<td><%= p.challengee %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div> 
 
-<h1>Settle Bets Here</h1>
-<%= link_to "bet", settle_bet_path %>
->>>>>>> master
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<table class="table table-hover">
+			<thead>
+				<h3>Bets Accepted</h3>
+				<tr>
+					<th><div class="challenge">Challenge</th>
+					<th><div class="amount">Amount</th>
+					<th><div class="challenger">Challenger</th>
+					<th><div class="challengee">Challengee</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @bets.with_accepted_state.each do |p| %>
+				<tr>
+					<td><%= p.challenge %></td>
+					<td><%= p.amount %></td>
+					<td><%= p.challenger %></td>
+					<td><%= p.challengee %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<table class="table table-hover">
+			<thead>
+				<h3>Bets Rejected</h3>
+				<tr>
+					<th><div class="challenge">Challenge</th>
+					<th><div class="amount">Amount</th>
+					<th><div class="challenger">Challenger</th>
+					<th><div class="challengee">Challengee</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @bets.with_rejected_state.each do |p| %>
+				<tr>
+					<td><%= p.challenge %></td>
+					<td><%= p.amount %></td>
+					<td><%= p.challenger %></td>
+					<td><%= p.challengee %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

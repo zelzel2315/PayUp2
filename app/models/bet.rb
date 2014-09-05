@@ -1,9 +1,6 @@
 class Bet < ActiveRecord::Base
 	include Workflow
 	workflow do
-		state :new do
-	 		event :submit, :transitions_to => :pending
-    end
     state :pending do
       event :accept, :transitions_to => :accepted
       event :reject, :transitions_to => :rejected

@@ -2,7 +2,7 @@
 
 
   resources :users
-  resources :bets, defaults: { format: :json }
+  resources :bets
 
   get '/venmo/home' => 'venmo#home', as: :home
   post '/venmo/home' => 'venmo#bet'

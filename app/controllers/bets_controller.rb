@@ -54,7 +54,6 @@ class BetsController < ApplicationController
       # challengee.user = 1234
       # challengee.save     
 
-
     if @bet.save
       # render json: @bet, status: :created
       redirect_to bets_path
@@ -62,6 +61,7 @@ class BetsController < ApplicationController
     # else
     #   render json: @bet.errors, status: :unprocessed_entity
     end
+    
   end
 
 private

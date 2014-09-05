@@ -3,13 +3,13 @@
 
   resources :users
   resources :bets
+<<<<<<< HEAD
   get '/settle/bet' => 'bets#settle'
+=======
+  resource :session, only: [:new, :create, :destroy]
+>>>>>>> 19a7e7bb2fdb977a8f5633c1a7be66eaebdad134
 
-  get '/venmo/home' => 'venmo#home', as: :home
-  post '/venmo/home' => 'venmo#bet'
-  get 'venmos' => 'venmo#index'
 
-
-  root 'users#index'
+  root 'sessions#new'
   
 end

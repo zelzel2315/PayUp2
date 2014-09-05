@@ -1,5 +1,10 @@
 <h1>Bet home page</h1>
-<%= @bets %>
+<% @bets.each do |p| %>
+<%= p.challenge %>
+<%= p.amount %>
+<%= p.challenger %>
+<%= p.challengee %></br>
+<% end %>
 
 <h1>Place Another Bet</h1>
 <%= link_to "index", new_bet_path %>

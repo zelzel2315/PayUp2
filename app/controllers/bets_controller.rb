@@ -11,13 +11,17 @@ class BetsController < ApplicationController
 
   def new
     @bet = Bet.new
+    @user = User.all
     # @user = current_user
   end
 
   def create
-    @challenge = params.require(:bet).permit(:challenge)
-    @challenges = @challenge.to_s
-    @bet = Bet.new(:challenge => @challenges) 
+    
+    
+    @bet = Bet.new(params.require(:bet).permit(:challenge,
+      :amount,
+      :challenger,
+      :challengee) )
     # @user_bet1 = current_user
     # @user_bet2 = current_selected_user
 

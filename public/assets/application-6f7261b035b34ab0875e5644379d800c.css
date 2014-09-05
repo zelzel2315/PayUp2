@@ -1,0 +1,158 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+ */
+
+
+@import 'bootstrap';
+
+$bgDefault: rgb(63, 148, 208);
+
+.nav {
+	padding: 8px;
+}
+.navbar1 {
+	background-color: white;
+	font-family: 'Exo', sans-serif;
+	font-weight: 200;
+}
+
+
+
+.company_name {
+	text-align: center;
+	margin-top: 18%;
+	font-size: 72px;
+	font-family: 'Exo', sans-serif;
+	font-weight: 200;
+}
+@import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+/* line 5, /Users/zachjohnson/wdi/08-week/payup2/PayUp2/app/assets/stylesheets/users.css.scss */
+body {
+  background-color: #3f94d0 !important;
+}
+
+/* line 8, /Users/zachjohnson/wdi/08-week/payup2/PayUp2/app/assets/stylesheets/users.css.scss */
+.header {
+  text-align: center;
+  /*top: calc(50% - 35px);
+  left: calc(50% - 255px);*/
+  /*	z-index: 2;*/
+}
+
+/* line 15, /Users/zachjohnson/wdi/08-week/payup2/PayUp2/app/assets/stylesheets/users.css.scss */
+.header div {
+  /*float: left;*/
+  color: #fff;
+  font-family: 'Exo', sans-serif;
+  font-size: 35px;
+  font-weight: 200;
+}
+
+/* line 23, /Users/zachjohnson/wdi/08-week/payup2/PayUp2/app/assets/stylesheets/users.css.scss */
+.header div span {
+  color: #6aaf07 !important;
+}
+
+/* line 27, /Users/zachjohnson/wdi/08-week/payup2/PayUp2/app/assets/stylesheets/users.css.scss */
+.login {
+  text-align: center;
+  /*position: absolute;*/
+  top: calc(50% - 75px);
+  left: calc(50% - 50px);
+  /*	height: 150px;
+  	width: 350px;
+  	padding: 10px;
+  	z-index: 2;*/
+}
+
+/*
+.login input[type=text]{
+	width: 250px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+}
+
+.login input[type=password]{
+	width: 250px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+	margin-top: 10px;
+}*/
+/* line 65, /Users/zachjohnson/wdi/08-week/payup2/PayUp2/app/assets/stylesheets/users.css.scss */
+.login input[type=button] {
+  text-align: center;
+  width: 260px;
+  height: 35px;
+  background: #fff;
+  border: 1px solid #fff;
+  cursor: pointer;
+  border-radius: 2px;
+  color: #a18d6c;
+  font-family: 'Exo', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 6px;
+  margin-top: 10px;
+}
+
+/* line 81, /Users/zachjohnson/wdi/08-week/payup2/PayUp2/app/assets/stylesheets/users.css.scss */
+.login input[type=button]:hover {
+  opacity: 0.8;
+}
+
+/* line 85, /Users/zachjohnson/wdi/08-week/payup2/PayUp2/app/assets/stylesheets/users.css.scss */
+.login input[type=button]:active {
+  opacity: 0.6;
+}
+
+/* line 89, /Users/zachjohnson/wdi/08-week/payup2/PayUp2/app/assets/stylesheets/users.css.scss */
+.login input[type=text]:focus {
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+/* line 94, /Users/zachjohnson/wdi/08-week/payup2/PayUp2/app/assets/stylesheets/users.css.scss */
+.login input[type=password]:focus {
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+/* line 99, /Users/zachjohnson/wdi/08-week/payup2/PayUp2/app/assets/stylesheets/users.css.scss */
+.login input[type=button]:focus {
+  outline: none;
+}
+
+/* line 103, /Users/zachjohnson/wdi/08-week/payup2/PayUp2/app/assets/stylesheets/users.css.scss */
+::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* line 107, /Users/zachjohnson/wdi/08-week/payup2/PayUp2/app/assets/stylesheets/users.css.scss */
+::-moz-input-placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}

@@ -1,3 +1,34 @@
+<<<<<<< HEAD
+
+<%= link_to new_bet_path do %>
+  <button type="button" class="btn btn-default">Place Another Bet!!</button>
+<% end %>
+
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th><div class="challenge">Challenge</th>
+					<th><div class="amount">Amount</th>
+					<th><div class="challenger">Challenger</th>
+					<th><div class="challengee">Challengee</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @bets.each do |p| %>
+				<tr>
+					<td><%= p.challenge %></td>
+					<td><%= p.amount %></td>
+					<td><%= p.challenger %></td>
+					<td><%= p.challengee %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div> 
+=======
 <h1>Bet home page</h1>
 <% @bets.each do |p| %>
 <%= p.challenge %>
@@ -12,3 +43,4 @@
 
 <h1>Settle Bets Here</h1>
 <%= link_to "bet", settle_bet_path %>
+>>>>>>> master

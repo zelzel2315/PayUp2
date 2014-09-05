@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140905013506) do
+ActiveRecord::Schema.define(version: 20140905173300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,8 +25,9 @@ ActiveRecord::Schema.define(version: 20140905013506) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_accepted"
-    t.string   "challenger"
-    t.string   "challengee"
+    t.integer  "challenger"
+    t.integer  "challengee"
+    t.string   "workflow_state"
   end
 
   create_table "user_bets", force: true do |t|

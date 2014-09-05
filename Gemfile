@@ -8,6 +8,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'httparty'
+gem 'workflow'
 
 #for angularjs to work nicely on rails
 gem 'angularjs-rails' 

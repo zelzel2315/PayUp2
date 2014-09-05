@@ -3,6 +3,7 @@
 
   resources :users
   resources :bets
+  get '/settle/bet' => 'bets#settle'
 
   get '/venmo/home' => 'venmo#home', as: :home
   post '/venmo/home' => 'venmo#bet'

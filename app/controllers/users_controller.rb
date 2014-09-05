@@ -4,14 +4,7 @@
     @user = User.find_by_id(params[:id])
   end
 
-  def bet
-    @email = params[:email]
-    @amount = params[:amount]
-    @access_token = params[:access_token]
-    url = "https://api.venmo.com/v1/payments"
-    @amount = HTTParty.post(url, :query => { "access_token" => @access_token, :email => @email, :amount => @amount, :note => 'PayUp'})
-    redirect_to new_user_path
-  end
+
 
   def new
     if params["code"]

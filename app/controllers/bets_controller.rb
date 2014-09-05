@@ -5,7 +5,8 @@ class BetsController < ApplicationController
 
   def index
     @bets = Bet.all
-    respond_with @bets, each_serializer: BetSerializer
+
+    
   end
 
   def new
@@ -14,9 +15,9 @@ class BetsController < ApplicationController
   end
 
   def create
-    @bet = Bet.new(bet_params)
-    @bet.challengee = 12323
-    @bet.challenger = 44444
+    @challenge = params.require(:bet).permit(:challenge)
+    @challenges = @challenge.to_s
+    @bet = Bet.new(:challenge => @challenges) 
     # @user_bet1 = current_user
     # @user_bet2 = current_selected_user
 
@@ -38,7 +39,7 @@ class BetsController < ApplicationController
 
     if @bet.save
       # render json: @bet, status: :created
-      redirect_to users_path
+      redirect_to bets_path
 
     # else
     #   render json: @bet.errors, status: :unprocessed_entity
@@ -48,7 +49,7 @@ class BetsController < ApplicationController
 private
 
   def bet_params
-    params.require(:bet).permit(:challenge, :amount, :challenge_start, :challenge_end, :winner_id, :created_at, :updated_at, :is_accepted, :challenger, :challengee) 
+    
   end
 
   def user_bet_params

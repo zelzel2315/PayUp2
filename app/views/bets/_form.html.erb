@@ -5,9 +5,4 @@
 	<%#= text_field_tag(:amount) %>
 	<%#= submit_tag %>
 <%# end %>
-<%= form_for @bet do |f|  %>
-	<%#= f.hidden_field "challenger", @current_user %>
-	<%= f.text_field :challenge, placeholder: "I challenge you to..." %>
-	<%= f.number_field :amount, placeholder: "How much?" %>
-	<%= f.submit "go!" %>
-<% end %>
+

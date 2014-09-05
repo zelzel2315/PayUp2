@@ -1,0 +1,9 @@
+<h1>Create a bet</h1>
+<%= form_for @bet do |f|  %>
+	
+	<p>Challenge</p><%= f.text_field :challenge, placeholder: "I challenge you to..." %>
+	
+	
+	
+	<%= f.submit "go!" %>
+<% end %>

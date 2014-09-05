@@ -4,7 +4,7 @@
 	<p>Challenge</p><%= f.text_field :challenge, placeholder: "I challenge you to..." %>
 	<p>Amount</p><%= f.text_field :amount %>
 	<p>Challenger</p><%= f.text_field :challenger %>
-	<p>Challengee</p><%= f.text_field :challengee %>
+	 <p>Challengee</p><%= f.collection_select :challengee, User.all, :id, :first_name %>
 	
 	
 	

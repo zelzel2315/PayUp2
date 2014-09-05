@@ -96,31 +96,10 @@ RSpec.describe UsersController, :type => :controller do
 		end
 	end
 
-	describe "put/patch update" do
-		before do
-      		@test_user = User.create! valid_attributes
-    	end
-    end
-
-    describe "with successful update" do
-      let :new_attributes do
-        {
-          :first_name => "Peter"
-        }
-      end
-
-      before do
-        patch :update, user_id: @test_user.user_id,
-        user: new_attributes
-      end
-
-      # it "should update the user record in the database" do
-      #   expect(@test_user.reload.user_id).to be "Peter"
-      # end
-
-      # it "should redirect to the index of all users" do
-      #   expect(response).to redirect_to users_path
-      # end
-    end
+	describe "valid OAuth token"
+		it "should show a valid OAuth token access token" do
+			expect(response).to be_eq(123456)
+		end
+	end
 
 end

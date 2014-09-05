@@ -4,10 +4,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   
+  helper_method :current_user 
+
   def current_user
-  	if ["code exist?"]
-  	@current_user ||= User.find_by_id(params[:id])
-  	end
+  	@current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
 end

@@ -8,6 +8,7 @@
 	<div class="col-md-8 col-md-offset-2">
 		<table class="table table-hover">
 			<thead>
+				<h3>All Bets</h3>
 				<tr>
 					<th><div class="challenge">Challenge</th>
 					<th><div class="amount">Amount</th>
@@ -31,4 +32,84 @@
 	</div>
 </div> 
 
+<<<<<<< HEAD
 
+=======
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<table class="table table-hover">
+			<thead>
+				<h3>Bets Pending</h3>
+				<tr>
+					<th><div class="challenge">Challenge</th>
+					<th><div class="amount">Amount</th>
+					<th><div class="challenger">Challenger</th>
+					<th><div class="challengee">Challengee</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @bets.with_pending_state.each do |p| %>
+				<tr>
+					<td><%= p.challenge %></td>
+					<td><%= p.amount %></td>
+					<td><%= p.challenger %></td>
+					<td><%= p.challengee %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div> 
+
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<table class="table table-hover">
+			<thead>
+				<h3>Bets Accepted</h3>
+				<tr>
+					<th><div class="challenge">Challenge</th>
+					<th><div class="amount">Amount</th>
+					<th><div class="challenger">Challenger</th>
+					<th><div class="challengee">Challengee</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @bets.with_accepted_state.each do |p| %>
+				<tr>
+					<td><%= p.challenge %></td>
+					<td><%= p.amount %></td>
+					<td><%= p.challenger %></td>
+					<td><%= p.challengee %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<table class="table table-hover">
+			<thead>
+				<h3>Bets Rejected</h3>
+				<tr>
+					<th><div class="challenge">Challenge</th>
+					<th><div class="amount">Amount</th>
+					<th><div class="challenger">Challenger</th>
+					<th><div class="challengee">Challengee</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @bets.with_rejected_state.each do |p| %>
+				<tr>
+					<td><%= p.challenge %></td>
+					<td><%= p.amount %></td>
+					<td><%= p.challenger %></td>
+					<td><%= p.challengee %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
+>>>>>>> a125ca07dae9ba98729c6596a6e2a3446f2185c2

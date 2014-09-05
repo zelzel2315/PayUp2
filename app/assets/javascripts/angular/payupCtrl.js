@@ -20,10 +20,19 @@ payupApp.controller('payupCtrl', [
 		}
 	};
 
+	}
+	
+	function Cntrl ($scope,$location) {
+        $scope.changeView = function(view){
+            $location.path(view); // path not hash
+        }
+    };
+
 	// $scope.destroyBet = function(bet){
 	// 	bet.$delete(function(){
 	// 		var position = $scope.bets.indexOf(bet);
 	// 		$scope.bets.splice(position, 1);
 	// 	});
 	// };
-}]);
+]);
+

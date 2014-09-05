@@ -1,5 +1,4 @@
 class UserbetsController < ApplicationController
-  before_action :get_user
 
   def new
     @user_bet = UserBet.new

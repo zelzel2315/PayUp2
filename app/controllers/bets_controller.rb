@@ -11,13 +11,17 @@ class BetsController < ApplicationController
 
   def new
     @bet = Bet.new
+    @user = User.all
     # @user = current_user
   end
 
   def create
-    @challenge = params.require(:bet).permit(:challenge)
-    @challenges = @challenge.to_s
-    @bet = Bet.new(:challenge => @challenges) 
+    
+    
+    @bet = Bet.new(params.require(:bet).permit(:challenge,
+      :amount,
+      :challenger,
+      :challengee) )
     # @user_bet1 = current_user
     # @user_bet2 = current_selected_user
 
@@ -36,7 +40,6 @@ class BetsController < ApplicationController
       # challengee.user = 1234
       # challengee.save     
 
-
     if @bet.save
       # render json: @bet, status: :created
       redirect_to bets_path
@@ -44,6 +47,7 @@ class BetsController < ApplicationController
     # else
     #   render json: @bet.errors, status: :unprocessed_entity
     end
+    
   end
 
 private

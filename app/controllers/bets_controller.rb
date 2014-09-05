@@ -4,7 +4,9 @@ class BetsController < ApplicationController
   #respond back with json when performing crud function
 
   def settle
-     if params["code"]
+    
+
+    if params["code"]
       auth_code = params["code"]
     end 
     url = "https://api.venmo.com/v1/oauth/access_token"

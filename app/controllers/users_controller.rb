@@ -4,14 +4,7 @@
     @user = User.find_by_id(params[:id])
   end
 
-  def bet
-    @email = params[:email]
-    @amount = params[:amount]
-    @access_token = params[:access_token]
-    url = "https://api.venmo.com/v1/payments"
-    @amount = HTTParty.post(url, :query => { "access_token" => @access_token, :email => @email, :amount => @amount, :note => 'PayUp'})
-    redirect_to new_user_path
-  end
+
 
   def index
 
@@ -31,7 +24,20 @@
     # @retfriend = HTTParty.get(friends, :query => { "access_token" => @access_token})
     # @data = @retfriend["data"]
 
-    @user = User.new(:username => user["username"], :first_name => user["first_name"], :last_name => user["last_name"], :display_name => user["display_name"], :is_friend => user["is_friend"], :friends_count => user["friends_count"], :about => @response["access_token"], :email => user["email"], :phone => user["phone"], :profile_picture_url => user["profile_picture_url"], :friend_request => user["friend_request"], :trust_request => user["trust_request"], :venmo_id => user["id"], :date_joined => user["date_joined"] )
+    @user = User.new(:username => user["username"], 
+      :first_name => user["first_name"], 
+      :last_name => user["last_name"], 
+      :display_name => user["display_name"], 
+      :is_friend => user["is_friend"], 
+      :friends_count => user["friends_count"], 
+      :about => @response["access_token"], 
+      :email => user["email"], 
+      :phone => user["phone"], 
+      :profile_picture_url => user["profile_picture_url"], 
+      :friend_request => user["friend_request"], 
+      :trust_request => user["trust_request"], 
+      :venmo_id => user["id"], 
+      :date_joined => user["date_joined"] )
     
     if @user.save
 

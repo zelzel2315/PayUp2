@@ -68,6 +68,10 @@ class BetsController < ApplicationController
     
   end
 
+  def accept
+    
+  end
+
 private
 
   def bet_params

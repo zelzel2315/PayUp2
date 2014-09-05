@@ -3,7 +3,8 @@
 <%= p.challenge %>
 <%= p.amount %>
 <%= p.challenger %>
-<%= p.challengee %></br>
+<%= p.challengee %>
+<%= link_to "settle up", bet_path(p.id) %></br>
 <% end %>
 
 <h1>Place Another Bet</h1>

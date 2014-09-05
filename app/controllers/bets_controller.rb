@@ -4,8 +4,11 @@ class BetsController < ApplicationController
   #respond back with json when performing crud function
 
   def settle
+     if params["code"]
+      auth_code = params["code"]
+    end 
     url = "https://api.venmo.com/v1/oauth/access_token"
-    @response = HTTParty.post(url, :query => {:client_id => '1917', :client_secret => 'bevp84EhbeJNt39mb6GgFA96jxCJ7Ata', :code => auth_code})
+    @response = HTTParty.post(url, :query => {:client_id => '1916', :client_secret => 'eGcyNHaysfbFGZ6xkMffUw3gGrKFzksG', :code => auth_code})
     user = @response["user"]
     @access_token = @response["access_token"]
     @refresh_token = @response["refresh_token"]
@@ -15,12 +18,13 @@ class BetsController < ApplicationController
     @access_token = params[:refresh_token]
     url = "https://api.venmo.com/v1/payments"
     @amount = HTTParty.post(url, :query => { "access_token" => @access_token, :email => @email, :amount => @amount, :note => 'PayUp'})
-    redirect_to new_user_path
+    redirect_to bets_path
   end
   def index
     @bets = Bet.all
-
-    
+  end
+  def show
+    @bet = Bet.find(params[:id])
   end
 
   def new

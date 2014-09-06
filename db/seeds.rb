@@ -12,7 +12,7 @@ Bet.create({
     challenge_start: Time.new,
     challenge_end: Time.new,
     winner_id: 1,
-    created_at: Time.new,
+    created_at: Time.new, 
     updated_at: Time.new
 })
 

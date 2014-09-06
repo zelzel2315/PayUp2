@@ -44,7 +44,7 @@
 
       @current_user_id = @user.venmo_id
       puts @current_user_id
-      render new_user_path
+      redirect_to bets_path
 
     end
   end

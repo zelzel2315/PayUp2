@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 20140905173300) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_accepted"
-    t.integer  "challenger"
-    t.integer  "challengee"
+    t.string   "challenger"
+    t.string   "challengee"
     t.string   "workflow_state"
   end
 

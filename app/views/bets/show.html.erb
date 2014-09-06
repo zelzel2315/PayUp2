@@ -1,14 +1,18 @@
+
 <h1><%= @bet.challenger %> bet
 <%= @bet.challengee %> 
-<%= @bet.amount %> mother f'n bucks to 
-<%= @bet.challenge %></h1>
+<%= @bet.amount %>  bucks to 
+<%= @bet.challenge %>
+
 
 
 <h1><%= @bet.challengee %> Won Settle the bet by paying cash with our app
-<a href="https://api.venmo.com/v1/oauth/authorize?client_id=1916&scope=make_payments%20access_profile%20access_email%20access_phone%20access_friends%20access_balance&response_type=code"><%= image_tag 'logowhite.png', width: '160px', border_radius: '20px #000000' %></a> </h1>
 
 
-<h1><%= @bet.challenger %> won and doesn't owe you shit</h1>
+
+<h1><%= @bet.challenger %> won and doesn't owe you anything</h1>
 
 
-<%= link_to "settle_bet_path" %>
+<h1>Settle this bet</h1>
+
+<a class="venmo-pay-button" data-recipient-id=<%= @bet.challengee %> data-amount=<%= @bet.amount %> data-note=<%= @bet.challenge %>></a>

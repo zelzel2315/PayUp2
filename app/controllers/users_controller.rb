@@ -19,6 +19,7 @@
     user = @response["user"]
     @access_token = @response["access_token"]
     @refresh_token = @response["refresh_token"]
+    @id = user["id"]
 
     # friends = "https://api.venmo.com/v1/users/" + user["id"] + "/friends?"
     # @retfriend = HTTParty.get(friends, :query => { "access_token" => @access_token})
@@ -41,8 +42,8 @@
     
     if @user.save
 
-      @current_user = @user.id
-      puts @current_user
+      @current_user_id = @user.venmo_id
+      puts @current_user_id
       render new_user_path
 
     end

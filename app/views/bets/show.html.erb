@@ -1,17 +1,18 @@
-<%= form_tag 
+
 <h1><%= @bet.challenger %> bet
 <%= @bet.challengee %> 
-<%= @bet.amount %> mother f'n bucks to 
-<%= @bet.challenge %></h1>
+<%= @bet.amount %>  bucks to 
+<%= @bet.challenge %>
+
 
 
 <h1><%= @bet.challengee %> Won Settle the bet by paying cash with our app
 
 
 
-<h1><%= @bet.challenger %> won and doesn't owe you shit</h1>
+<h1><%= @bet.challenger %> won and doesn't owe you anything</h1>
 
 
-<%= link_to "settle_bet_path" %>
+<h1>Settle this bet</h1>
 
-<iframe style="width: 120px; height: 33px" scrolling="no" frameborder="0" src="//platform.venmo.com/#payment-widget?recipient_id=1397129314566144218"></iframe>
+<a class="venmo-pay-button" data-recipient-id=<%= @bet.challengee %> data-amount=<%= @bet.amount %> data-note=<%= @bet.challenge %>></a>

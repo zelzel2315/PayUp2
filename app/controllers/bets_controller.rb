@@ -4,7 +4,9 @@ class BetsController < ApplicationController
   #respond back with json when performing crud function
 
   def settle
-     if params["code"]
+    
+
+    if params["code"]
       auth_code = params["code"]
     end 
     url = "https://api.venmo.com/v1/oauth/access_token"
@@ -14,8 +16,7 @@ class BetsController < ApplicationController
     @refresh_token = @response["refresh_token"]
     @email = params[:email]
     @amount = params[:amount]
-    @access_token = params[:access_token]
-    @access_token = params[:refresh_token]
+   
     url = "https://api.venmo.com/v1/payments"
     @amount = HTTParty.post(url, :query => { "access_token" => @access_token, :email => @email, :amount => @amount, :note => 'PayUp'})
     redirect_to bets_path
@@ -25,12 +26,14 @@ class BetsController < ApplicationController
   end
   def show
     @bet = Bet.find(params[:id])
+    
+    @current_user_id = params[:challenger]
   end
 
   def new
     @bet = Bet.new
-    @user = User.all
-    # @user = current_user
+    @current_user = params[:current_user_id]
+    puts @current_user
   end
 
   def create
@@ -39,7 +42,8 @@ class BetsController < ApplicationController
     @bet = Bet.new(params.require(:bet).permit(:challenge,
       :amount,
       :challenger,
-      :challengee) )
+      :challengee,
+      :venmo_id) )
     # @user_bet1 = current_user
     # @user_bet2 = current_selected_user
 
@@ -65,6 +69,10 @@ class BetsController < ApplicationController
     # else
     #   render json: @bet.errors, status: :unprocessed_entity
     end
+    
+  end
+
+  def accept
     
   end
 

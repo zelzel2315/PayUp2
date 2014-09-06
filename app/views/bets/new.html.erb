@@ -3,9 +3,9 @@
 	
 	<p>Challenge</p><%= f.text_field "challenge" %>
 	<p>Amount</p><%= f.text_field :amount %>
-	<p>Challenger</p><%= f.text_field :challenge %>
+	<p>Challenger</p><%= f.text_field :challenger %>
 
-	 <p>Challengee</p><%= f.collection_select :challengee, User.all, :venmo_id, :username %>
+	 <p>Challengee</p><%= f.collection_select :challengee, User.all, :venmo_id, :display_name %>
 	
 	
 	

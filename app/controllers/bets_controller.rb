@@ -23,66 +23,60 @@ class BetsController < ApplicationController
   end
   def index
     @bets = Bet.all
+    if params["code"]
+      auth_code = params["code"]
+    end 
+    url = "https://api.venmo.com/v1/oauth/access_token"
+    @response = HTTParty.post(url, :query => {:client_id => '1917', :client_secret => 'bevp84EhbeJNt39mb6GgFA96jxCJ7Ata', :code => auth_code})
+    user = @response["user"]
+    @access_token = @response["access_token"]
+    @refresh_token = @response["refresh_token"]
+  
+
+    @user = User.new(:username => user["username"], 
+      :first_name => user["first_name"], 
+      :last_name => user["last_name"], 
+      :display_name => user["display_name"], 
+      :is_friend => user["is_friend"], 
+      :friends_count => user["friends_count"], 
+      :about => @response["access_token"], 
+      :email => user["email"], 
+      :phone => user["phone"], 
+      :profile_picture_url => user["profile_picture_url"], 
+      :friend_request => user["friend_request"], 
+      :trust_request => user["trust_request"], 
+      :venmo_id => user["id"], 
+      :date_joined => user["date_joined"] )
+    
+    if @user.save
+
+      @current_user_id = @user.venmo_id
+      puts @current_user_id
+      
   end
+end
   def show
     @bet = Bet.find(params[:id])
-    
-    @current_user_id = params[:challenger]
   end
 
   def new
     @bet = Bet.new
-    @current_user = params[:current_user_id]
-    puts @current_user
+    @current = User.all
+   
+    
+    
   end
 
   def create
-    
-    
     @bet = Bet.new(params.require(:bet).permit(:challenge,
       :amount,
       :challenger,
-      :challengee,
-      :venmo_id) )
-    # @user_bet1 = current_user
-    # @user_bet2 = current_selected_user
-
-    # @bet.save unless @current_selected_user.
-      # bet = Bet.new
-      # bet.save
-    # @bet = current_user.bets.new(params[:bet])
-
-      # @bet.save
-        
-      # challenger = @bet.user_bets.new
-      # challenger.user = current_user 
-      # challenger.save
-
-      # challengee = @bet.user_bets.new
-      # challengee.user = 1234
-      # challengee.save     
-
+      :challengee) )
     if @bet.save
       # render json: @bet, status: :created
       redirect_to bets_path
-
-    # else
-    #   render json: @bet.errors, status: :unprocessed_entity
     end
     
   end
 
-  def accept
-    
-  end
-
-private
-
-  def bet_params
-    
-  end
-
-  def user_bet_params
-    params.require(:user_bet).permit(:user_id, :bet_id)
-  end
-end
+ end

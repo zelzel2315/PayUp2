@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
 
   def current_user
   	@current_user ||= User.find(session[:user_id]) if session[:user_id]
+  	puts current_user
   end
-
+  def current_id
+  	@current_id ||= request.original_url
+  	puts @current_id
+  end
 end

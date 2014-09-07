@@ -1,5 +1,5 @@
 class Bet < ActiveRecord::Base
-	include Workflow
+  include Workflow
 	workflow do
     state :pending do
       event :accept, :transitions_to => :accepted
@@ -8,6 +8,7 @@ class Bet < ActiveRecord::Base
     state :accepted
     state :rejected
   end
+
 
   # belongs_to :beter, class_name: "User", foreign_key: :user_id, inverse_of: :beters
 

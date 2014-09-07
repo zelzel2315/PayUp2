@@ -35,15 +35,11 @@
 
 
 <h1>Make a new bet</h1>
-<%= link_to "index", new_bet_path %>
+<%= link_to "index", new_bet_path(@current_user_id) %>
+<%= @current_user_id %>
 
 <!-- <h1>This is where your fake internet friends should appear</h1> -->
 
-<%# form_tag @data.each do |e| %>
-<%#= e["first_name"] %>
-<%#= check_box_tag e["id"]  %></br>
-<%#= submit_tag %>
-<%# end %>
 
 
 	

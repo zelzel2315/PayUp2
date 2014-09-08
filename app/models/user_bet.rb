@@ -6,4 +6,4 @@ class UserBet < ActiveRecord::Base
   accepts_nested_attributes_for :bet
 
 end
- 
+  

@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140903012020) do
+ActiveRecord::Schema.define(version: 20140905173300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
+ 
   create_table "bets", force: true do |t|
     t.string   "challenge"
     t.float    "amount"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20140903012020) do
     t.integer  "winner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_accepted"
+    t.string   "workflow_state"
   end
 
   create_table "user_bets", force: true do |t|
@@ -52,13 +54,6 @@ ActiveRecord::Schema.define(version: 20140903012020) do
     t.boolean  "trust_request"
     t.string   "venmo_id"
     t.date     "date_joined"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "venmos", force: true do |t|
-    t.string   "username"
-    t.integer  "made_bets"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

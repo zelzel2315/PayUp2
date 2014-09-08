@@ -6,15 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# Bet.create({
-# 	string:   "I challenge you to eat 5 McDonald's cheeseburgers in 5 minutes.",
-#     float:    1.00,
-#     date:     Time.new,
-#     date:     Time.new,
-#     integer:  1,
-#     datetime: Time.new,
-#     datetime: Time.new
-# })
+Bet.create({
+	challenge: "I challenge you to eat 5 McDonald's cheeseburgers in 5 minutes.",
+    amount: 1.00,
+    challenge_start: Time.new,
+    challenge_end: Time.new,
+    winner_id: 1,
+    created_at: Time.new, 
+    updated_at: Time.new
+})
 
 User.create({
 	email: "steve@steve.com",
@@ -26,6 +26,13 @@ User.create({
 	first_name: "Bill"
 	})
 
-# UserBet.create({
+UserBet.create({
+	bet_id: 1,
+	user_id: 1,
+	amount: 1.00,
+	})
 
-# 	})
+
+
+
+

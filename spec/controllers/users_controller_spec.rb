@@ -14,7 +14,7 @@ RSpec.describe UsersController, :type => :controller do
 			User.create! valid_attributes
 		end
 
-		before do
+		before do 
 			get :index
 		end
 
@@ -70,14 +70,38 @@ RSpec.describe UsersController, :type => :controller do
 	end 
 
 	describe "POST create" do
-			
-		describe " a successful create " do
-			it "should create a user in the DB" do
+		describe "successfully saves" do
+			it "should be saved to the DB" do
 				expect do
 					post :create, user: valid_attributes
 				end.to change(User, :count).by(1)
-		 	end
-		end
+
+			end
+
+			it "should redirect to the index page for users" do
+		        post :create, user: valid_attributes
+		        expect(response).to redirect_to users_path
+			end
+		end 
+
+		describe "unable to save" do
+	      let :invalid_attributes do
+	        {
+	          :first_name => nil,
+	        }
+	      end
+
+	      it "should not create any new records in the database" do
+	        expect do
+	          post :create, user: invalid_attributes
+	        end.to_not change(User, :count).by(1)
+	      end
+
+	      it "should rerender the new template" do
+	        post :create, user: invalid_attributes
+	        expect(response).to render_template :new
+	      end
+	    end
 	end
 
 	describe "Get edit" do
@@ -96,31 +120,11 @@ RSpec.describe UsersController, :type => :controller do
 		end
 	end
 
-	describe "put/patch update" do
-		before do
-      		@test_user = User.create! valid_attributes
-    	end
-    end
+	# describe "valid OAuth token"
+	# 	it "should show a valid OAuth token access token" do
+	# 		expect(response).to be_eq(123456)
+	# 	end
+	# end
 
-    describe "with successful update" do
-      let :new_attributes do
-        {
-          :first_name => "Peter"
-        }
-      end
-
-      before do
-        patch :update, user_id: @test_user.user_id,
-        user: new_attributes
-      end
-
-      # it "should update the user record in the database" do
-      #   expect(@test_user.reload.user_id).to be "Peter"
-      # end
-
-      # it "should redirect to the index of all users" do
-      #   expect(response).to redirect_to users_path
-      # end
-    end
 
 end

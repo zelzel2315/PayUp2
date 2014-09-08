@@ -3,53 +3,56 @@ class BetsController < ApplicationController
 	respond_to :json
   #respond back with json when performing crud function
 
+  def settle
+    
+
+    if params["code"]
+      auth_code = params["code"]
+    end 
+    url = "https://api.venmo.com/v1/oauth/access_token"
+    @response = HTTParty.post(url, :query => {:client_id => '1916', :client_secret => 'eGcyNHaysfbFGZ6xkMffUw3gGrKFzksG', :code => auth_code})
+    user = @response["user"]
+    @access_token = @response["access_token"]
+    @refresh_token = @response["refresh_token"]
+    @email = params[:email]
+    @amount = params[:amount]
+   
+    url = "https://api.venmo.com/v1/payments"
+    @amount = HTTParty.post(url, :query => { "access_token" => @access_token, :email => @email, :amount => @amount, :note => 'PayUp'})
+    redirect_to bets_path
+  end
   def index
     @bets = Bet.all
-    respond_with @bets, each_serializer: BetSerializer
+   
+  end
+  def show
+    @bet = Bet.find(params[:id])
   end
 
   def new
     @bet = Bet.new
+    @current = User.all
+   
+     
+    
   end
 
   def create
-    @bet = Bet.new(bet_params)
-    @bet.user1 = current_user
-    @bet.user2 = current_selected_user
-
-    # @bet.save unless @current_selected_user.
-      # bet = Bet.new
-      # bet.save
-
-        #creates a new user_match object belonging to the first of the two users who are being matched
-        # need to create if logged in = current_user
-        user1 = UserBet.new
-        user1.user_id = current_user.id 
-        user1.bet_id = bet.id
-        user1.save
-
-        #creates a new user_match object belonging to the second of the two users who are being matched
-        user2 = UserBet.new
-        user2.user_id = @current_selected_user.id
-        user2.bet_id = bet.id
-        user2.save
-    end
-
+    @bet = Bet.new(params.require(:bet).permit(:challenge,
+      :amount,
+      :challenger,
+      :challengee) )
     if @bet.save
-      render json: @bet, status: :created
-
-    else
-      render json: @bet.errors, status: :unprocessed_entity
+      # render json: @bet, status: :created
+      redirect_to bets_path
     end
+    
   end
 
-private
-
-  def bet_params
-    params.require(:bet).permit(:user1.id, :user2.id) 
+  def destroy
+    @bet = Bet.where(params[:id]).first
+    @bet.destroy
+    redirect_to users_path
   end
 
-  def user_bet_params
-    params.require(:user_bet).permit(:user_id, :bet_id)
-  end
-end
+ end

@@ -1,0 +1,19 @@
+<%= render 'layouts/nav' %>
+
+<h1><%= @bet.challenger %> bet
+<%= @bet.challengee %> 
+<%= @bet.amount %>  bucks to 
+<%= @bet.challenge %>
+
+
+
+<h1><%= @bet.challengee %> Won Settle the bet by paying cash with our app
+
+
+
+<h1><%= @bet.challenger %> won and doesn't owe you anything</h1>
+
+
+<h1>Settle this bet</h1>
+
+<a class="venmo-pay-button" data-recipient-id=<%= @bet.challengee %> data-amount=<%= @bet.amount %> data-note=<%= @bet.challenge %>></a>

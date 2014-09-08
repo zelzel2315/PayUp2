@@ -1,0 +1,17 @@
+<%= render 'layouts/nav' %>
+
+<h1>Create a bet</h1>
+<%= form_for @bet do |f|  %>
+	
+	<p>Challenge</p><%= f.text_field "challenge" %>
+	<p>Amount</p><%= f.text_field :amount %>
+	<p>Challenger</p><%= f.text_field :challenger %>
+
+	 <p>Challengee</p><%= f.collection_select :challengee, User.all, :venmo_id, :display_name %>
+	
+	
+	
+	<%= f.submit "go!" %>
+<% end %>
+
+<%=  @current_user_id %>

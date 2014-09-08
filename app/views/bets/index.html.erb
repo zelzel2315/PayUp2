@@ -1,7 +1,7 @@
 
 <%= render 'layouts/nav' %>
 
-<%= link_to new_bet_path do %>
+<%= link_to new_bet_path(@current_user_id) do %>
   <button type="button" class="btn btn-default col-md-2 col-md-offset-5">Place A Bet</button>
 <% end %>
 <%= @current_user_id %>

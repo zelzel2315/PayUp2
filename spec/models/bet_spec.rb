@@ -10,6 +10,3 @@ end
 describe Bet do
 	it { should state(:pending) }
 end
-
-
-

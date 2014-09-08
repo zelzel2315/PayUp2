@@ -19,4 +19,4 @@ RSpec.describe User, type: :model do
 #       :trust_request => user["trust_request"], 
 #       :venmo_id => user["id"], 
 #       :date_joined => user["date_joined"] )
-end
+end 

@@ -17,7 +17,7 @@ describe "Users" do
     end
   end
 
-end
+end  
 
   # describe "GET /movies/:id" do
   #   it "returns a requested movie" do

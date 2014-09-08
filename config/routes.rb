@@ -3,6 +3,7 @@
 
   resources :users
   resources :bets
+  resource :userbet
 
   get '/settle/bet' => 'bets#settle'
 

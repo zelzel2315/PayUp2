@@ -8,7 +8,8 @@ class Bet < ActiveRecord::Base
     state :accepted
     state :rejected
   end
-
+ 
+  validates_presence_of :challenge, :amount, :winner_id, :is_accepted
 
   # belongs_to :beter, class_name: "User", foreign_key: :user_id, inverse_of: :beters
 

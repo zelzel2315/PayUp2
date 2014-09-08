@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20140905173300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
+ 
   create_table "bets", force: true do |t|
     t.string   "challenge"
     t.float    "amount"

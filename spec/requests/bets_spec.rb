@@ -1,1 +1,0 @@
-bets_spec.rb

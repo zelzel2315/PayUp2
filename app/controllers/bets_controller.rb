@@ -24,7 +24,7 @@ class BetsController < ApplicationController
   def index
     @bets = Bet.all
    
-end
+  end
   def show
     @bet = Bet.find(params[:id])
   end
@@ -47,6 +47,12 @@ end
       redirect_to bets_path
     end
     
+  end
+
+  def destroy
+    @bet = Bet.where(params[:id]).first
+    @bet.destroy
+    redirect_to users_path
   end
 
  end

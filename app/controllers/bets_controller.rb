@@ -31,17 +31,19 @@ class BetsController < ApplicationController
 
   def new
     @bet = Bet.new
-    @current = User.all
+    # @user= User.find(params[:id])
+    @user = @current_user_id
    
      
     
   end
 
   def create
+    @user = @current_user_id
     @bet = Bet.new(params.require(:bet).permit(:challenge,
       :amount,
       :challenger,
-      :challengee) )
+      :challengee, :challenge_start, :challenge_end, :venmo_id) )
     if @bet.save
       # render json: @bet, status: :created
       redirect_to bets_path

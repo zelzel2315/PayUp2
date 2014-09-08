@@ -1,4 +1,5 @@
 
+<%= render 'layouts/nav' %>
 
 <%= link_to new_bet_path do %>
   <button type="button" class="btn btn-default col-md-2 col-md-offset-5">Place A Bet</button>
@@ -40,7 +41,7 @@
 				<% @bets.with_pending_state.each do |p| %>
 				<tr>
 					<td><%= p.challenge %></td>
-					<td><%= p.amount %></td>
+					<td>$<%= p.amount %>0</td>
 					<td><%= p.challenger %></td>
 					<td><%= p.challengee %></td>
 				</tr>

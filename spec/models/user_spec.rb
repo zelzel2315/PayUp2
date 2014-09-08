@@ -1,25 +1,22 @@
-require 'spec_helper'
+require 'rails_helper'
 
-let(:test_model) { build(:test_model) }
-subject { build(:test_model) }
+RSpec.describe User, type: :model do 
 
-it { should be_valid }
-it { should validate_presence_of :name }
-it { should validate_uniqueness_of :name }
-
-describe "#average_cost" do
-  context "with no purchases" do
-    it "is nil" do
-      expect(test_model.average_cost).to be_nil
-    end
-  end
-
-  context "with one or more purchases" do
-    let(:test_model_with_purchases) { create_list(:test_model_with_purchases, purchase_count: 2, cost: 100) }
-
-    it "calculates the average purchase price properly" do
-      expect(test_model_with_purchases.average_cost).to eq(100)
-    end
-  end
+  it { should have_many(:user_bets) }
+ 	it { should have_many(:bets) }
+	it { should accept_nested_attributes_for(:bets) }
+# it { should have(:username => user["username"], 
+#       :first_name => user["first_name"], 
+#       :last_name => user["last_name"], 
+#       :display_name => user["display_name"], 
+#       :is_friend => user["is_friend"], 
+#       :friends_count => user["friends_count"], 
+#       :about => @response["access_token"], 
+#       :email => user["email"], 
+#       :phone => user["phone"], 
+#       :profile_picture_url => user["profile_picture_url"], 
+#       :friend_request => user["friend_request"], 
+#       :trust_request => user["trust_request"], 
+#       :venmo_id => user["id"], 
+#       :date_joined => user["date_joined"] )
 end
-  

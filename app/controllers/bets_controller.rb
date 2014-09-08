@@ -33,7 +33,7 @@ end
     @bet = Bet.new
     @current = User.all
    
-    
+     
     
   end
 

@@ -7,6 +7,6 @@ class User < ActiveRecord::Base
  	has_many :user_bets, :dependent => :destroy
  	has_many :bets, through: :user_bets, :foreign_key => :bet_id
 
- 	accepts_nested_attributes_for :bets
+ 	accepts_nested_attributes_for :bets 
 end
-
+ 

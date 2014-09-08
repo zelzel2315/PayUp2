@@ -25,8 +25,6 @@ ActiveRecord::Schema.define(version: 20140905173300) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_accepted"
-    t.string   "user_bet1"
-    t.string   "user_bet2"
     t.string   "workflow_state"
   end
 
@@ -56,13 +54,6 @@ ActiveRecord::Schema.define(version: 20140905173300) do
     t.boolean  "trust_request"
     t.string   "venmo_id"
     t.date     "date_joined"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "venmos", force: true do |t|
-    t.string   "username"
-    t.integer  "made_bets"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

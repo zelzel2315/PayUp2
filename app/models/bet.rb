@@ -17,5 +17,5 @@ class Bet < ActiveRecord::Base
   has_many :user_bets
   has_many :users, through: :user_bets, :foreign_key => :user_id
 
-  accepts_nested_attributes_for :users
+  accepts_nested_attributes_for :users 
 end 

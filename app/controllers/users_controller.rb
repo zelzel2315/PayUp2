@@ -1,16 +1,19 @@
-  class UsersController < ApplicationController
+class UsersController < ApplicationController
 
-  def fetch_user
-    @user = User.find_by_id(params[:id])
-  end
+  respond_to :json
+
+  # def fetch_user
+  #   @user = User.find_by_id(params[:id])
+  # end
 
 
 
   def index
-
+    @users = User.all
   end
 
   def new
+    # render :json => {:success => true, info: :info} # on success
     if params["code"]
       auth_code = params["code"]
     end 
@@ -21,9 +24,9 @@
     @refresh_token = @response["refresh_token"]
     @id = user["id"]
 
-    # friends = "https://api.venmo.com/v1/users/" + user["id"] + "/friends?"
-    # @retfriend = HTTParty.get(friends, :query => { "access_token" => @access_token})
-    # @data = @retfriend["data"]
+    friends = "https://api.venmo.com/v1/users/" + user["id"] + "/friends?"
+    @retfriend = HTTParty.get(friends, :query => { "access_token" => @access_token})
+    @data = @retfriend["data"]
 
     @user = User.new(:username => user["username"], 
       :first_name => user["first_name"], 
@@ -47,7 +50,12 @@
       redirect_to bets_path
 
     end
+
+  def show
+    respond_with User.find(params[:id])
   end
+
+end
 
   
 

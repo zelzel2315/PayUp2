@@ -96,10 +96,11 @@ RSpec.describe UsersController, :type => :controller do
 		end
 	end
 
-	describe "valid OAuth token"
-		it "should show a valid OAuth token access token" do
-			expect(response).to be_eq(123456)
-		end
-	end
+	# describe "valid OAuth token"
+	# 	it "should show a valid OAuth token access token" do
+	# 		expect(response).to be_eq(123456)
+	# 	end
+	# end
+
 
 end

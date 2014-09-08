@@ -8,5 +8,6 @@ class User < ActiveRecord::Base
  	has_many :bets, through: :user_bets, :foreign_key => :bet_id
 
  	accepts_nested_attributes_for :bets
+ 	validates :venmo_id, :presence => true
 end
  

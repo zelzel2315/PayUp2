@@ -43,10 +43,21 @@
     if @user.save
 
       @current_user_id = @user.venmo_id
+      @current_user = @user.id
+      puts @current_user
       puts @current_user_id
+      puts @access_token
+      puts auth_code
       redirect_to bets_path
 
     end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    # @user.save
+    @access_token.destroy
+    redirect_to new_session_path
   end
 
   
